@@ -13,3 +13,10 @@ body {
 .mt {
   margin-top: 75px;
 }
+
+.section {
+  padding: 80px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

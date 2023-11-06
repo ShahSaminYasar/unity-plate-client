@@ -7,9 +7,6 @@ const navlinks = [
     path: "/foods",
     name: "Available Foods",
   },
-];
-
-export const privateNavlinks = [
   {
     path: "/add-food",
     name: "Add Food",

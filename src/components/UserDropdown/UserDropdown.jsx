@@ -1,6 +1,14 @@
 import PropTypes from "prop-types";
+import useAuth from "../../hooks/useAuth";
+import {NavLink} from "react-router-dom"
 
 const UserDropdown = ({ className }) => {
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <div
       className={`hs-dropdown relative inline-flex ${className && className}`}
@@ -11,12 +19,12 @@ const UserDropdown = ({ className }) => {
         className="hs-dropdown-toggle py-1 pl-1 pr-3 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 transition-all text-sm"
       >
         <img
-          className="w-8 h-auto rounded-full"
-          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+          className="w-8 aspect-square rounded-full object-cover"
+          src={user?.photoURL}
           alt="Maria"
         />
-        <span className="text-gray-600 font-medium truncate max-w-[7.5rem] dark:text-gray-400">
-          Maria
+        <span className="text-gray-600 font-medium truncate max-w-[50px]">
+          {user?.displayName}
         </span>
         <svg
           className="hs-dropdown-open:rotate-180 w-2.5 h-2.5 text-gray-600"
@@ -37,14 +45,19 @@ const UserDropdown = ({ className }) => {
 
       <div
         className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 mt-2"
-        aria-labelledby="hs-dropdown-custom-trigger"
+        aria-labelledby="hs-dropdown-with-header"
       >
-        <a
-          className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 "
-          href="#"
-        >
-          Newsletter
-        </a>
+        <div className="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg">
+          {/* <p className="text-sm text-gray-500">Signed in as</p> */}
+          <p className="text-sm font-medium text-gray-800">
+            {user?.displayName}
+          </p>
+          <p className="text-xs font-medium text-gray-600">{user?.email}</p>
+        </div>
+        <div className="mt-2 py-2 pl-3 flex flex-col gap-2 items-start">
+          <NavLink>📁 Account</NavLink>
+          <button onClick={handleLogout}>🔑 Logout</button>
+        </div>
       </div>
     </div>
   );
