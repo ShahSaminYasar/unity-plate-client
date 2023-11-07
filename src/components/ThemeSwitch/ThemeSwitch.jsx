@@ -20,12 +20,14 @@ const ThemeSwitch = ({ className }) => {
             className="w-[30px] aspect-square rounded-xl bg-pink-700"
             onClick={() => {
               setTheme("purple");
+              localStorage.setItem("theme", "purple");
             }}
           ></button>
           <button
             className="w-[30px] aspect-square rounded-xl bg-teal-700"
             onClick={() => {
               setTheme("green");
+              localStorage.setItem("theme", "green");
             }}
           ></button>
         </div>
