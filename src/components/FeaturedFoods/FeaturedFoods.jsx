@@ -29,7 +29,7 @@ const FeaturedFoods = () => {
   return (
     <Container className="section">
       <Title>Featured Foods</Title>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-7">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
         {foods?.data?.map((food) => (
           <FeaturedFoodCard key={food?._id} food={food} />
         ))}

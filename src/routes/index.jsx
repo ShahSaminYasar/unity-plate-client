@@ -10,6 +10,8 @@ import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
 import Account from "../pages/Account/Account";
+import EditFood from "../pages/EditFood/EditFood";
+import EditFoodRoute from "./EditFoodRoute";
 
 const routes = createBrowserRouter([
   {
@@ -49,6 +51,16 @@ const routes = createBrowserRouter([
         ),
       },
       {
+        path: "edit-food/:food_id",
+        element: (
+          <PrivateRoute>
+            <EditFoodRoute>
+              <EditFood />
+            </EditFoodRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "my-requests",
         element: (
           <PrivateRoute>
@@ -66,8 +78,12 @@ const routes = createBrowserRouter([
       },
       {
         path: "account",
-        element: <PrivateRoute><Account /></PrivateRoute>
-      }
+        element: (
+          <PrivateRoute>
+            <Account />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

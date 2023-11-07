@@ -6,7 +6,7 @@ const FeaturedFoodCard = ({ food }) => {
   const { borderColor, bgGradient, primaryColor } = useSettings();
   return (
     <div
-      className={`w-full rounded-xl border-4 ${borderColor} overflow-hidden`}
+      className={`w-full max-w-[355px] block mx-auto rounded-xl border-4 ${borderColor} overflow-hidden`}
     >
       <img src={food?.image} alt="" className="aspect-[16/10] object-cover" />
       <div className="p-5 flex flex-col gap-5">
