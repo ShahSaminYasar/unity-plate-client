@@ -4,9 +4,11 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import Container from "../../layout/Container";
+import useAxios from "../../hooks/useAxios";
 
 const Account = () => {
   const { user } = useAuth();
+  const axios = useAxios();
   const [editing, setEditing] = useState(false);
 
   const update = (e) => {
@@ -22,7 +24,23 @@ const Account = () => {
 
     updateProfile(user, { displayName: name, photoURL: dp })
       .then(() => {
-        toast.success("Profile updated", { id: toastUpdatingProfile });
+        const userDetails = {
+          email: email,
+          name: name,
+          dp: dp,
+        };
+
+        axios
+          .put("/user?update=true", userDetails)
+          .then(() => {
+            toast.success("Profile updated", { id: toastUpdatingProfile });
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.error(error?.message);
+            toast.error(error?.message, { id: toastUpdatingProfile });
+          });
+
         // updateCurrentUser(auth.currentUser);
         // const user = { email, name, dp };
         // fetch("https://mongodb-server-flame.vercel.app/user", {

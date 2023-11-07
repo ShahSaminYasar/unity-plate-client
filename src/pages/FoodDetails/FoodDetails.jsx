@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import Loading from "../../components/Loading/Loading";
 import Container from "../../layout/Container";
@@ -116,12 +116,23 @@ const FoodDetails = () => {
           <p className="flex flex-row gap-2 items-center text-neutral-800">
             {food?.additional_note}
           </p>
-          <button
-            className={`p-3 rounded-lg w-full text-center block bg-gradient-to-br mt-5 ${bgGradient} ${primaryColor} shadow-sm hover:shadow-lg`}
-            data-hs-overlay="#hs-scroll-inside-viewport-modal"
-          >
-            Request food
-          </button>
+
+          {food?.donor?.email === user?.email ? (
+            <NavLink
+              to={`/edit-food/${food?._id}`}
+              className={`p-3 rounded-lg w-full text-center block bg-gradient-to-bl mt-5 ${bgGradient} ${primaryColor} shadow-sm hover:shadow-lg`}
+              data-hs-overlay="#hs-scroll-inside-viewport-modal"
+            >
+              Edit food
+            </NavLink>
+          ) : (
+            <button
+              className={`p-3 rounded-lg w-full text-center block bg-gradient-to-br mt-5 ${bgGradient} ${primaryColor} shadow-sm hover:shadow-lg`}
+              data-hs-overlay="#hs-scroll-inside-viewport-modal"
+            >
+              Request food
+            </button>
+          )}
         </div>
       </div>
 

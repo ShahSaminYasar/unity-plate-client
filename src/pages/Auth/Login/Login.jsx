@@ -6,8 +6,10 @@ import GoogleBtn from "../../../components/GoogleBtn/GoogleBtn";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import useAxios from "../../../hooks/useAxios";
 
 const Login = () => {
+  const axios = useAxios();
   const navigate = useNavigate();
   let location = useLocation();
   location = location?.state || "/";
@@ -21,9 +23,25 @@ const Login = () => {
     const toastLoggingIn = toast.loading("Logging in...");
     try {
       loginWithEmailPassword(email, password)
-        .then(() => {
-          toast.success("Logged in", { id: toastLoggingIn });
-          navigate(location);
+        .then((res) => {
+          const userDetails = {
+            email: res?.user?.email,
+            name: res?.user?.displayName,
+            dp: res?.user?.photoURL,
+          };
+
+          axios
+            .put("/user", userDetails)
+            .then(() => {
+              toast.success(`Logged in as ${res?.user?.displayName}`, {
+                id: toastLoggingIn,
+              });
+              navigate(location);
+            })
+            .catch((error) => {
+              console.error(error?.message);
+              toast.error(error?.message, { id: toastLoggingIn });
+            });
         })
         .catch((error) => toast.error(error?.message, { id: toastLoggingIn }));
     } catch (error) {

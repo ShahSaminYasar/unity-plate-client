@@ -36,7 +36,20 @@ const Header = () => {
             {/* Theme Switch Dropdown Ends */}
 
             {/* User Options Dropdown Starts */}
-            {user && <UserDropdown className="xl:hidden inline-flex" />}
+            {user ? (
+              <UserDropdown className="xl:hidden inline-flex" />
+            ) : (
+              <NavLink
+                className={({ isActive }) =>
+                  `${
+                    isActive ? "text-orange-500" : undefined
+                  } ${primaryColorAlt} ${bgColorAlt} py-2 px-3 rounded-md block xl:hidden w-fit`
+                }
+                to={`/login`}
+              >
+                Login
+              </NavLink>
+            )}
             {/* User Options Dropdown Ends */}
 
             {/* Mobile Menu Button Starts */}
@@ -98,7 +111,7 @@ const Header = () => {
                   className={({ isActive }) =>
                     `${
                       isActive ? "text-orange-500" : undefined
-                    } ${primaryColorAlt} ${bgColorAlt} py-2 px-3 rounded-md block w-fit`
+                    } ${primaryColorAlt} ${bgColorAlt} py-2 hidden xl:block px-3 rounded-md w-fit`
                   }
                   to={`/login`}
                 >

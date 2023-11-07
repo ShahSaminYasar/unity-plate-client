@@ -5,10 +5,15 @@ import Title from "../../../components/Title/Title";
 import GoogleBtn from "../../../components/GoogleBtn/GoogleBtn";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
+import useAxios from "../../../hooks/useAxios";
 
 const Register = () => {
+  const axios = useAxios();
+  const navigate = useNavigate();
+  let location = useLocation();
+  location = location?.state || "/";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +31,24 @@ const Register = () => {
             displayName: name,
             photoURL: photo_url,
           })
-            .then(() => toast.success("Signed up", { id: toastSigningUp }))
+            .then(() => {
+              const userDetails = {
+                email: email,
+                name: name,
+                dp: photo_url,
+              };
+
+              axios
+                .put("/user", userDetails)
+                .then(() => {
+                  toast.success("Signed up", { id: toastSigningUp });
+                  navigate(location);
+                })
+                .catch((error) => {
+                  console.error(error?.message);
+                  toast.error(error?.message, { id: toastSigningUp });
+                });
+            })
             .catch((error) =>
               toast.error(error?.message, { id: toastSigningUp })
             );
@@ -75,7 +97,6 @@ const Register = () => {
         <input
           type="text"
           placeholder="Photo URL (Optional)"
-          required
           value={photo_url}
           autoComplete="true"
           onChange={(e) => setPhotoUrl(e.target.value)}

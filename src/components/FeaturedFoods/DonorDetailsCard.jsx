@@ -23,12 +23,17 @@ const DonorDetailsCard = ({ email }) => {
   return (
     <div className="rounded-lg w-full p-5 border-4 border-neutral-200 mb-1 flex flex-row items-center justify-start gap-8">
       <img
-        src={donor?.dp}
+        src={
+          donor?.dp ||
+          "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+        }
         alt=""
         className="w-[80px] aspect-square object-cover rounded-lg"
       />
       <div>
-        <span className="block text-neutral-500 w-full mb-1 text-sm">Donated by</span>
+        <span className="block text-neutral-500 w-full mb-1 text-sm">
+          Donated by
+        </span>
         <h4 className="text-lg">{donor?.name}</h4>
         <p className="block w-full text-sm break-words">{donor?.email}</p>
       </div>
