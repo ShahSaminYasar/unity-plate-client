@@ -5,9 +5,12 @@ import Title from "../../../components/Title/Title";
 import GoogleBtn from "../../../components/GoogleBtn/GoogleBtn";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+  let location = useLocation();
+  location = location?.state || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { borderColor, bgColorAlt } = useSettings();
@@ -18,7 +21,10 @@ const Login = () => {
     const toastLoggingIn = toast.loading("Logging in...");
     try {
       loginWithEmailPassword(email, password)
-        .then(() => toast.success("Logged in", { id: toastLoggingIn }))
+        .then(() => {
+          toast.success("Logged in", { id: toastLoggingIn });
+          navigate(location);
+        })
         .catch((error) => toast.error(error?.message, { id: toastLoggingIn }));
     } catch (error) {
       console.error(error);

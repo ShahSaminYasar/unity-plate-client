@@ -5,7 +5,7 @@ const Title = ({ children }) => {
   const { primaryColor } = useSettings();
   return (
     <h2
-      className={`text-4xl mb-2 font-semibold block text-left ${primaryColor}`}
+      className={`text-4xl mb-10 font-semibold block text-left ${primaryColor}`}
     >
       {children}
     </h2>

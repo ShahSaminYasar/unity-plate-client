@@ -3,8 +3,12 @@ import useAuth from "../../hooks/useAuth";
 import useSettings from "../../hooks/useSettings";
 import PropTypes from "prop-types";
 import { FcGoogle } from "react-icons/fc";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const GoogleBtn = ({ className, title }) => {
+  const navigate = useNavigate();
+  let location = useLocation();
+  location = location?.state || "/";
   const { borderColor, primaryColor } = useSettings();
   const { googleLogin } = useAuth();
 
@@ -12,11 +16,12 @@ const GoogleBtn = ({ className, title }) => {
     const toastLoggingIn = toast.loading("Logging in...");
     try {
       googleLogin()
-        .then((res) =>
+        .then((res) => {
           toast.success(`Logged in as ${res?.user?.displayName}`, {
             id: toastLoggingIn,
-          })
-        )
+          });
+          navigate(location);
+        })
         .catch((error) => toast.error(error?.message, { id: toastLoggingIn }));
     } catch (error) {
       console.error(error);

@@ -5,13 +5,18 @@ export const SettingsContext = createContext();
 
 const SettingsProvider = ({ children }) => {
   // Colors
-  const [theme, setTheme] = useState("purple");
+  const [theme, setTheme] = useState("green");
   const [bgColor, setBgColor] = useState("");
   const [bgColorAlt, setBgColorAlt] = useState("");
   const [primaryColor, setPrimaryColor] = useState("");
   const [primaryColorAlt, setPrimaryColorAlt] = useState("");
   const [borderColor, setBorderColor] = useState("");
   const [bgGradient, setBgGradient] = useState("from-green-100 to-green-50");
+
+  useEffect(() => {
+    const localTheme = localStorage.getItem("theme") || "green";
+    setTheme(localTheme);
+  }, []);
 
   useEffect(() => {
     setBgColor(theme === "purple" ? "bg-purple-100" : "bg-green-100");

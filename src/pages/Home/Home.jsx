@@ -1,4 +1,8 @@
+import FeaturedFoods from "../../components/FeaturedFoods/FeaturedFoods";
+
 const Home = () => {
-  return <div>Home</div>;
+  return <main>
+    <FeaturedFoods />
+  </main>;
 };
 export default Home;
