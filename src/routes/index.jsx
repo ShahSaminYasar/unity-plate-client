@@ -9,6 +9,7 @@ import MyFoodRequests from "../pages/MyFoodRequests/MyFoodRequests";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
+import Account from "../pages/Account/Account";
 
 const routes = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const routes = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
+      {
+        path: "account",
+        element: <PrivateRoute><Account /></PrivateRoute>
+      }
     ],
   },
 ]);

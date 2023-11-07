@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import useAuth from "../../hooks/useAuth";
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 const UserDropdown = ({ className }) => {
   const { user, logout } = useAuth();
@@ -55,7 +55,7 @@ const UserDropdown = ({ className }) => {
           <p className="text-xs font-medium text-gray-600">{user?.email}</p>
         </div>
         <div className="mt-2 py-2 pl-3 flex flex-col gap-2 items-start">
-          <NavLink>📁 Account</NavLink>
+          <NavLink to="/account">📁 Account</NavLink>
           <button onClick={handleLogout}>🔑 Logout</button>
         </div>
       </div>
