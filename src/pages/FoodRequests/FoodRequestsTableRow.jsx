@@ -104,25 +104,25 @@ const FoodRequestsTableRow = ({ food_id, request_document }) => {
       <td className="px-6 py-4 whitespace-nowrap text-end text-base font-medium">
         <div className="flex flex-row gap-2 justify-end">
           <NavLink
-            to={`/request/${request_document?._id}`}
+            to={`/manage-request/${request_document?._id}`}
             className="inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none"
           >
-            View
+            Manage
           </NavLink>
           {request_document?.status !== "delivered" && (
-            <button
-              onClick={() =>
-                handleCancelRequest(
-                  request_document?.status,
-                  request_document?._id
-                )
-              }
-              type="button"
-              className="inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 disabled:opacity-50 disabled:pointer-events-none"
-            >
-              Cancel
-            </button>
-          )}
+              <button
+                onClick={() =>
+                  handleCancelRequest(
+                    request_document?.status,
+                    request_document?._id
+                  )
+                }
+                type="button"
+                className="inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 disabled:opacity-50 disabled:pointer-events-none"
+              >
+                Cancel
+              </button>
+            )}
         </div>
       </td>
     </tr>

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import useDonor from "../../hooks/useDonor";
 import useSettings from "../../hooks/useSettings";
 
-const DonorDetailsCard = ({ email, className }) => {
+const DonorDetailsCard = ({ email, className, title = "Donated by" }) => {
   const donor = useDonor(email);
   const { primaryColor } = useSettings();
 
@@ -36,7 +36,7 @@ const DonorDetailsCard = ({ email, className }) => {
       />
       <div>
         <span className="block text-neutral-500 w-full mb-1 text-sm">
-          Donated by
+          {title}
         </span>
         <h4 className="text-lg">{donor?.name}</h4>
         <p className="block w-full text-sm break-words">{donor?.email}</p>
@@ -48,6 +48,7 @@ const DonorDetailsCard = ({ email, className }) => {
 DonorDetailsCard.propTypes = {
   email: PropTypes.string,
   className: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default DonorDetailsCard;

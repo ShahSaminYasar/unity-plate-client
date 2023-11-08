@@ -61,6 +61,7 @@ const FeaturedFoodCard = ({ food }) => {
           <MdOutlineCalendarMonth className="text-xl" />
           Expiry: {food?.expiry_date}
         </p>
+        <p className="flex gap-2 items-center">Status: {food?.status}</p>
         <p>{food?.additional_note}</p>
       </div>
       <UserDetailsSet email={food?.donor?.email} className={`mt-auto px-3`} />
