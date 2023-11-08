@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import useAxios from "../../../hooks/useAxios";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const axios = useAxios();
@@ -62,6 +63,9 @@ const Register = () => {
 
   return (
     <Container className="section">
+      <Helmet>
+        <title>Register | Unity Plate</title>
+      </Helmet>
       <form
         onSubmit={handleSubmit}
         className={`flex flex-col gap-4 p-4 rounded-lg border-4 border-b-8 ${borderColor} w-full max-w-sm text-lg`}

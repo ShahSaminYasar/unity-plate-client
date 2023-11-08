@@ -6,11 +6,13 @@ import FeaturedFoodCard from "../../components/FeaturedFoods/FeaturedFoodCard";
 import Container from "../../layout/Container";
 import FilterGroup from "../../components/FilterGroup/FilterGroup";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const AvailableFoods = () => {
   const axios = useAxios();
 
   const [sortOrder, setSortOrder] = useState("asc");
+  const [pageTitle, setPageTitle] = useState("Available Foods");
 
   const {
     data: foods,
@@ -30,8 +32,11 @@ const AvailableFoods = () => {
 
   return (
     <Container className={"page"}>
-      <FilterGroup setSortOrder={setSortOrder} />
-      <Title>Available Foods</Title>
+      <Helmet>
+        <title>Available Foods | Unity Plate</title>
+      </Helmet>
+      <FilterGroup setSortOrder={setSortOrder} setPageTitle={setPageTitle} />
+      <Title>{pageTitle}</Title>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         {foods?.data?.map((food) => (
           <FeaturedFoodCard key={food?._id} food={food} />

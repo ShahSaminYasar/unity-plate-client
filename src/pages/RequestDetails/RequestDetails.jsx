@@ -14,6 +14,7 @@ import GoBackButton from "../../components/GoBackButton/GoBackButton";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const RequestDetails = () => {
   const axios = useAxios();
@@ -77,6 +78,9 @@ const RequestDetails = () => {
 
   return (
     <Container className="page">
+      <Helmet>
+        <title>Food Request Details | Unity Plate</title>
+      </Helmet>
       <div className="w-full max-w-md lg:max-w-full p-5 rounded-lg border-4 border-slate-200 flex flex-col lg:flex-row gap-7">
         <div className="w-full">
           <img

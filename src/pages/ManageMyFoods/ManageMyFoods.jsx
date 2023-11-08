@@ -7,6 +7,7 @@ import Loading from "../../components/Loading/Loading";
 import { NavLink, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const ManageMyFoods = () => {
   let location = useLocation();
@@ -58,6 +59,9 @@ const ManageMyFoods = () => {
 
   return (
     <Container className={`page`}>
+      <Helmet>
+        <title>Manage Foods | Unity Plate</title>
+      </Helmet>
       <Title>Manage foods</Title>
       <div className="w-full flex flex-col">
         <div className="-m-1.5 overflow-x-auto">

@@ -7,6 +7,7 @@ import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const axios = useAxios();
@@ -52,6 +53,9 @@ const Login = () => {
 
   return (
     <Container className="section">
+      <Helmet>
+        <title>Login | Unity Plate</title>
+      </Helmet>
       <form
         onSubmit={handleSubmit}
         className={`flex flex-col gap-4 p-4 rounded-lg border-4 border-b-8 ${borderColor} w-full max-w-sm text-lg`}

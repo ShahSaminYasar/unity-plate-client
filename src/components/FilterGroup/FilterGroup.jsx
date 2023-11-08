@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import useSettings from "../../hooks/useSettings";
 
-const FilterGroup = ({ setSortOrder }) => {
+const FilterGroup = ({ setSortOrder, setPageTitle }) => {
   const { borderColor, bgColorAlt } = useSettings();
   const [searchText, setSearchText] = useState("");
   return (
@@ -11,9 +11,10 @@ const FilterGroup = ({ setSortOrder }) => {
         <select
           defaultValue={`asc`}
           onChange={(e) => {
+            setPageTitle("Sorted available foods");
             setSortOrder(e.target.value);
           }}
-          className={`py-2 px-3 pe-9 block border-2 ${borderColor} rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none`}
+          className={`py-2 px-3 pe-9 outline-none block border-2 ${borderColor} rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none`}
         >
           <option value="asc">↑ Expiry date (asc)</option>
           <option value="desc">↓ Expiry date (desc)</option>
@@ -26,7 +27,7 @@ const FilterGroup = ({ setSortOrder }) => {
         >
           <input
             type="text"
-            placeholder="Search here"
+            placeholder="Search (Not working rn)"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             className="w-full p-2 text-base text-slate-800 bg-white outline-none"
@@ -42,6 +43,7 @@ const FilterGroup = ({ setSortOrder }) => {
 
 FilterGroup.propTypes = {
   setSortOrder: PropTypes.func,
+  setPageTitle: PropTypes.func,
 };
 
 export default FilterGroup;

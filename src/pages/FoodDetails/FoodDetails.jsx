@@ -15,6 +15,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import GoBackButton from "../../components/GoBackButton/GoBackButton";
+import { Helmet } from "react-helmet";
 
 const FoodDetails = () => {
   let location = useLocation();
@@ -86,6 +87,9 @@ const FoodDetails = () => {
 
   return (
     <Container className={"page"}>
+      <Helmet>
+        <title>Food Details | Unity Plate</title>
+      </Helmet>
       <Title>Food Details</Title>
       <div className="w-full flex flex-col justify-start items-center gap-10">
         <div className="w-full grid md:grid-cols-2 gap-10 justify-center md:justify-between">

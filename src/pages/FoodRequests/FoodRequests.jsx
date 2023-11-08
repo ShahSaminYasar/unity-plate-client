@@ -5,6 +5,7 @@ import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../components/Loading/Loading";
 import FoodRequestsTableRow from "./FoodRequestsTableRow";
+import { Helmet } from "react-helmet";
 
 const FoodRequests = () => {
   const { user } = useAuth();
@@ -24,6 +25,9 @@ const FoodRequests = () => {
 
   return (
     <Container className={`page`}>
+      <Helmet>
+        <title>Food Requests | Unity Plate</title>
+      </Helmet>
       <Title>Food requests</Title>
       <div className="w-full flex flex-col">
         <div className="-m-1.5 overflow-x-auto">
