@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import Loading from "../../components/Loading/Loading";
 import Container from "../../layout/Container";
@@ -14,8 +14,10 @@ import {
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import GoBackButton from "../../components/GoBackButton/GoBackButton";
 
 const FoodDetails = () => {
+  let location = useLocation();
   const axios = useAxios();
   const { id } = useParams();
   const { primaryColor, bgGradient } = useSettings();
@@ -257,6 +259,8 @@ const FoodDetails = () => {
           </div>
         </div>
       </div>
+
+      <GoBackButton to={location?.state} />
     </Container>
   );
 };

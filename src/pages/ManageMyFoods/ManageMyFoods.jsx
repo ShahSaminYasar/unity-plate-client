@@ -4,9 +4,10 @@ import Container from "../../layout/Container";
 import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../components/Loading/Loading";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const ManageMyFoods = () => {
+  let location = useLocation();
   const { user } = useAuth();
   const axios = useAxios();
 
@@ -102,6 +103,7 @@ const ManageMyFoods = () => {
                         <div className="flex flex-row gap-2 justify-end">
                           <NavLink
                             to={`/food/${food?._id}`}
+                            state={location?.pathname || "/foods"}
                             className="inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none"
                           >
                             View

@@ -1,8 +1,9 @@
 import useSettings from "../../hooks/useSettings";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const FeaturedFoodCard = ({ food }) => {
+  let location = useLocation();
   const { borderColor, bgGradient, primaryColor } = useSettings();
   return (
     <div
@@ -20,6 +21,7 @@ const FeaturedFoodCard = ({ food }) => {
         </div>
         <NavLink
           to={`/food/${food?._id}`}
+          state={location?.pathname || "/foods"}
           className={`bg-gradient-to-l ${bgGradient} p-3 block w-full text-center ${primaryColor} rounded-lg`}
         >
           View Details
