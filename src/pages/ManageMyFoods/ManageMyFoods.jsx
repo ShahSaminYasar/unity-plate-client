@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Title from "../../components/Title/Title";
 import Container from "../../layout/Container";
 import useAxios from "../../hooks/useAxios";
@@ -12,6 +12,8 @@ const ManageMyFoods = () => {
   let location = useLocation();
   const { user } = useAuth();
   const axios = useAxios();
+
+  const queryClient = useQueryClient();
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["userAddedFoods"],
@@ -40,9 +42,9 @@ const ManageMyFoods = () => {
         const toastDeletingFoodItem = toast.loading("Deleting...");
         axios
           .delete(`/delete-food/${id}`)
-          .then((res) => {
-            console.log(res);
+          .then(() => {
             toast.success("Deleted", { id: toastDeletingFoodItem });
+            queryClient.invalidateQueries({ queryKey: ["userAddedFoods"] });
           })
           .catch((error) => {
             console.error(error);

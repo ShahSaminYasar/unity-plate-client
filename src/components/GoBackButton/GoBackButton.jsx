@@ -10,7 +10,7 @@ const GoBackButton = ({ to }) => {
       className={`block w-fit ml-auto my-7 py-3 px-5 rounded-md bg-gradient-to-l ${primaryColor} text-base ${bgGradient}`}
       to={to}
     >
-      ← All requests
+      ← Go back
     </NavLink>
   );
 };

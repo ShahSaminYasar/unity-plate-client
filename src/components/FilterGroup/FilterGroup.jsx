@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import useSettings from "../../hooks/useSettings";
 
@@ -8,14 +9,13 @@ const FilterGroup = ({ setSortOrder }) => {
     <div className="w-full flex flex-row justify-between items-center gap-4 mb-10">
       <div>
         <select
+          defaultValue={`asc`}
           onChange={(e) => {
             setSortOrder(e.target.value);
           }}
           className={`py-2 px-3 pe-9 block border-2 ${borderColor} rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none`}
         >
-          <option value="asc" selected>
-            ↑ Expiry date (asc)
-          </option>
+          <option value="asc">↑ Expiry date (asc)</option>
           <option value="desc">↓ Expiry date (desc)</option>
         </select>
       </div>
@@ -39,4 +39,9 @@ const FilterGroup = ({ setSortOrder }) => {
     </div>
   );
 };
+
+FilterGroup.propTypes = {
+  setSortOrder: PropTypes.func,
+};
+
 export default FilterGroup;
