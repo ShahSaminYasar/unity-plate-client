@@ -4,7 +4,6 @@ import useAxios from "../../hooks/useAxios";
 import Loading from "../../components/Loading/Loading";
 import FeaturedFoodCard from "../../components/FeaturedFoods/FeaturedFoodCard";
 import Container from "../../layout/Container";
-import { useLocation } from "react-router-dom";
 
 const AvailableFoods = () => {
   const axios = useAxios();

@@ -4,7 +4,6 @@ import Container from "../../layout/Container";
 import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../components/Loading/Loading";
-import { NavLink } from "react-router-dom";
 import MyFoodRequestsTableRow from "./MyFoodRequestsTableRow";
 
 const MyFoodRequests = () => {
