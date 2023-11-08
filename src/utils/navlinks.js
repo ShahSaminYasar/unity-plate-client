@@ -11,14 +11,14 @@ const navlinks = [
     path: "/add-food",
     name: "Add Food",
   },
-  {
-    path: "/manage-foods",
-    name: "Manage My Foods",
-  },
-  {
-    path: "/my-requests",
-    name: "My Requests",
-  },
+  // {
+  //   path: "/manage-foods",
+  //   name: "Manage My Foods",
+  // },
+  // {
+  //   path: "/my-requests",
+  //   name: "My Requests",
+  // },
 ];
 
 export default navlinks;
