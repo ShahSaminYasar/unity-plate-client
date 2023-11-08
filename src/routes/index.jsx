@@ -13,6 +13,8 @@ import Account from "../pages/Account/Account";
 import EditFood from "../pages/EditFood/EditFood";
 import EditFoodRoute from "./EditFoodRoute";
 import FoodRequests from "../pages/FoodRequests/FoodRequests";
+import RequestDetails from "../pages/RequestDetails/RequestDetails";
+import axios from "axios";
 
 const routes = createBrowserRouter([
   {
@@ -74,6 +76,18 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <FoodRequests />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "request/:request_id",
+        loader: ({ params }) =>
+          axios.get(
+            `http://localhost:4000/api/v1/get-requests?id=${params.request_id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <RequestDetails />
           </PrivateRoute>
         ),
       },

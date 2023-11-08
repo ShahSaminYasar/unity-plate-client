@@ -12,7 +12,7 @@ const Header = () => {
   const { user } = useAuth();
   return (
     <header
-      className={`bg-gradient-to-r ${bgGradient} ${primaryColor} border-b-2 ${borderColor} fixed top-0 left-0 w-full shadow-md z-[9999]`}
+      className={`hs-overlay-open:hidden bg-gradient-to-r ${bgGradient} ${primaryColor} border-b-2 ${borderColor} fixed top-0 left-0 w-full shadow-md z-[999]`}
     >
       <Container
         className={`flex flex-wrap xl:justify-start xl:flex-nowrap z-50 w-full font-medium text-lg py-4`}

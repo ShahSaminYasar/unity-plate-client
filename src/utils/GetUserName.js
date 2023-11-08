@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "./useAxios";
+import useAxios from "../hooks/useAxios";
 
-const useDonor = (email) => {
+const GetUserName = (email) => {
   const axios = useAxios();
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["getDonorDetails", email],
+    queryKey: ["getDonorName", email],
     queryFn: () => {
       return axios.get(`get-user/${email}`);
     },
@@ -15,6 +15,7 @@ const useDonor = (email) => {
   if (isError) return { error: error };
 
   const donor = data?.data?.[0];
-  return donor;
+  return donor?.name;
 };
-export default useDonor;
+
+export default GetUserName;

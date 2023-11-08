@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import useDonor from "../../hooks/useDonor";
 import useSettings from "../../hooks/useSettings";
 
-const DonorDetailsCard = ({ email }) => {
+const DonorDetailsCard = ({ email, className }) => {
   const donor = useDonor(email);
   const { primaryColor } = useSettings();
 
@@ -21,7 +21,11 @@ const DonorDetailsCard = ({ email }) => {
   }
 
   return (
-    <div className="rounded-lg w-full p-5 border-4 border-neutral-200 mb-1 flex flex-row items-center justify-start gap-8">
+    <div
+      className={`rounded-lg w-full p-5 border-4 border-neutral-200 mb-1 flex flex-row items-center justify-start gap-6 ${
+        className && className
+      }`}
+    >
       <img
         src={
           donor?.dp ||
@@ -43,6 +47,7 @@ const DonorDetailsCard = ({ email }) => {
 
 DonorDetailsCard.propTypes = {
   email: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default DonorDetailsCard;

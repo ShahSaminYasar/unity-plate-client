@@ -1,4 +1,4 @@
-import { useState } from "react";
+import PropTypes from "prop-types";
 import useAuth from "../../../hooks/useAuth";
 import useAxios from "../../../hooks/useAxios";
 import useSettings from "../../../hooks/useSettings";
@@ -20,7 +20,7 @@ const EditFoodForm = ({ food_id }) => {
   //   const [additional_note, setAdditionalNote] = useState(food?.additional_note);
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["getFoodDetails"],
+    queryKey: ["getFoodDetails", food_id],
     queryFn: () => {
       return axios.get(`/get-foods?id=${food_id}`);
     },
@@ -114,7 +114,6 @@ const EditFoodForm = ({ food_id }) => {
             type="date"
             required
             defaultValue={food?.expiry_date}
-            required
             name="food_expiry_date"
             placeholder="Expiry date"
             className={`${borderColor}`}
@@ -146,4 +145,9 @@ const EditFoodForm = ({ food_id }) => {
     </form>
   );
 };
+
+EditFoodForm.propTypes = {
+  food_id: PropTypes.string,
+};
+
 export default EditFoodForm;
