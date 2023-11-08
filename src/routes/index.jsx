@@ -16,11 +16,13 @@ import FoodRequests from "../pages/FoodRequests/FoodRequests";
 import RequestDetails from "../pages/RequestDetails/RequestDetails";
 import axios from "axios";
 import ManageRequest from "../pages/ManageRequest/ManageRequest";
+import Error from "../pages/Error/Error";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <PrimaryLayout />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
