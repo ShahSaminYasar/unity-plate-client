@@ -5,6 +5,8 @@ import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../components/Loading/Loading";
 import { NavLink, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const ManageMyFoods = () => {
   let location = useLocation();
@@ -25,7 +27,37 @@ const ManageMyFoods = () => {
   // console.log(foods);
 
   const handleDelete = (id) => {
-    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const toastDeletingFoodItem = toast.loading("Deleting...");
+        axios
+          .delete(`/delete-food/${id}`)
+          .then((res) => {
+            console.log(res);
+            toast.success("Deleted", { id: toastDeletingFoodItem });
+          })
+          .catch((error) => {
+            console.error(error);
+            toast.error(`Error ${error?.message}`, {
+              id: toastDeletingFoodItem,
+            });
+          });
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
   };
 
   return (
