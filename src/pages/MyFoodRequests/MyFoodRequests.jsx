@@ -4,14 +4,14 @@ import Container from "../../layout/Container";
 import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../components/Loading/Loading";
-import MyFoodRequestsTableRow from "./MyFoodRequestsTableRow";
+import MyFoodRequestsTableRow from "./MyFoodRequestsTableRow"
 
 const MyFoodRequests = () => {
   const { user } = useAuth();
   const axios = useAxios();
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["userAddedFoods"],
+    queryKey: ["userAddedRequests"],
     queryFn: () => {
       return axios.get(`/get-requests?requester=${user?.email}`);
     },

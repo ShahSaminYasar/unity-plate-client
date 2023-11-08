@@ -52,12 +52,6 @@ const ManageMyFoods = () => {
               id: toastDeletingFoodItem,
             });
           });
-
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
       }
     });
   };

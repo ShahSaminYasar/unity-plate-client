@@ -7,14 +7,14 @@ import UserName from "../../components/UserDetailComponents/UserName";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
-const MyFoodRequestsTableRow = ({ food_id, request_document }) => {
-  // console.log("MyReqs: ", food_id, request_document);
+const FoodRequestsTableRow = ({ food_id, request_document }) => {
+  //   console.log(food_id);
   const { primaryColor } = useSettings();
   const axios = useAxios();
   const queryClient = useQueryClient();
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["getMyRequestFoodDetails", food_id],
+    queryKey: ["getRequestFoodDetails", food_id],
     queryFn: () => {
       return axios.get(`/get-foods?id=${food_id}`);
     },
@@ -58,7 +58,7 @@ const MyFoodRequestsTableRow = ({ food_id, request_document }) => {
               toast.success("Cancelled request", {
                 id: toastCancellingRequest,
               });
-              queryClient.invalidateQueries({ id: ["userAddedRequests"] });
+              queryClient.invalidateQueries({ id: ["othersAddedRequests"] });
             })
             .catch((error) => {
               console.error(error);
@@ -84,7 +84,7 @@ const MyFoodRequestsTableRow = ({ food_id, request_document }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-base text-gray-800">
         {/* {food?.donor?.email} */}
-        <UserName email={food?.donor?.email} />
+        <UserName email={request_document?.requester_email} />
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-base text-gray-800">
         ${request_document?.donation_amount}.00
@@ -129,9 +129,9 @@ const MyFoodRequestsTableRow = ({ food_id, request_document }) => {
   );
 };
 
-MyFoodRequestsTableRow.propTypes = {
+FoodRequestsTableRow.propTypes = {
   food_id: PropTypes.string,
   request_document: PropTypes.object,
 };
 
-export default MyFoodRequestsTableRow;
+export default FoodRequestsTableRow;
