@@ -5,6 +5,7 @@ import useSettings from "../../hooks/useSettings";
 import useAuth from "../../hooks/useAuth";
 import UserDropdown from "../UserDropdown/UserDropdown";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
+import LogoIcon from "../../assets/icon2.png";
 
 const Header = () => {
   const { primaryColor, borderColor, primaryColorAlt, bgColorAlt, bgGradient } =
@@ -15,7 +16,7 @@ const Header = () => {
       className={`hs-overlay-open:hidden bg-gradient-to-r ${bgGradient} ${primaryColor} border-b-2 ${borderColor} fixed top-0 left-0 w-full shadow-md z-[999]`}
     >
       <Container
-        className={`flex flex-wrap xl:justify-start xl:flex-nowrap z-50 w-full font-medium text-lg py-4`}
+        className={`flex flex-wrap xl:justify-start xl:flex-nowrap z-50 w-full font-medium text-lg p-0 py-2`}
       >
         <nav
           className="max-w-[85rem] w-full mx-auto px-4 xl:flex xl:items-center xl:justify-between gap-6"
@@ -24,10 +25,15 @@ const Header = () => {
           <div className="flex items-center gap-4">
             {/* Logo Starts */}
             <NavLink
-              className={`flex-1 xl:flex-none text-3xl font-semibold`}
+              className={`flex-1 xl:flex-none text-lg md:text-3xl font-semibold flex flex-col md:flex-row items-start md:items-center gap-1`}
               to="/"
             >
-              Unity Plate
+              <img
+                src={LogoIcon}
+                className="h-[65px] md:h-[65px] w-auto"
+                alt=""
+              />
+              <span className="hidden md:block">Unity Plate</span>
             </NavLink>
             {/* Logo Ends */}
 

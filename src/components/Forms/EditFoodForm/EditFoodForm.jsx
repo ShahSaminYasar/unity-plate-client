@@ -138,7 +138,7 @@ const EditFoodForm = ({ food_id }) => {
       ></textarea>
       <button
         type="submit"
-        className={`bg-gradient-to-r ${bgGradient} py-3 px-4 ${primaryColor} rounded-md block w-fit mx-auto col-span-2`}
+        className={`bg-gradient-to-r ${bgGradient} py-3 px-4 ${primaryColor} rounded-md block w-full md:w-fit mx-auto md:col-span-2`}
       >
         Add food item
       </button>

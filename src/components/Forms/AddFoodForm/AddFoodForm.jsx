@@ -49,7 +49,7 @@ const AddFoodForm = () => {
   return (
     <form
       onSubmit={handleAddProduct}
-      className="form w-full grid md:grid-cols-2 gap-5"
+      className="form w-full grid grid-cols-1 md:grid-cols-2 gap-5"
     >
       <div className="flex flex-col gap-5">
         <input
@@ -100,7 +100,7 @@ const AddFoodForm = () => {
       ></textarea>
       <button
         type="submit"
-        className={`bg-gradient-to-r ${bgGradient} py-3 px-4 ${primaryColor} rounded-md block w-fit mx-auto col-span-2`}
+        className={`bg-gradient-to-r ${bgGradient} py-3 px-4 ${primaryColor} rounded-md block w-full md:w-fit mx-auto md:col-span-2`}
       >
         Add food item
       </button>

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
-import { Navigate, useLoaderData } from "react-router-dom";
+import { Navigate, useLoaderData, useLocation } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import Container from "../../layout/Container";
 import DonorDetailsCard from "../../components/FeaturedFoods/DonorDetailsCard";
@@ -19,6 +19,7 @@ import { Helmet } from "react-helmet";
 const ManageRequest = () => {
   const axios = useAxios();
   //   const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useAuth();
   let request_data = useLoaderData();
   request_data = request_data?.data[0];
@@ -126,7 +127,7 @@ const ManageRequest = () => {
             {request_data?.status}
           </span>
 
-          {request_data?.status !== "delivered" && (
+          {food?.status !== "delivered" && (
             <button
               onClick={() =>
                 handleConfirmRequest(request_data?.status, request_data?._id)
@@ -140,7 +141,7 @@ const ManageRequest = () => {
         </div>
       </div>
 
-      <GoBackButton to="/my-requests" />
+      <GoBackButton to={location?.state || "/food-requests"} />
     </Container>
   );
 };

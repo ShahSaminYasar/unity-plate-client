@@ -22,7 +22,7 @@ const routes = createBrowserRouter([
   {
     path: "/",
     element: <PrimaryLayout />,
-    errorElement: <Error />,
+    // errorElement: <Error />,
     children: [
       {
         index: true,
@@ -86,7 +86,7 @@ const routes = createBrowserRouter([
         path: "manage-request/:request_id",
         loader: ({ params }) =>
           axios.get(
-            `http://localhost:4000/api/v1/get-requests?id=${params.request_id}`
+            `https://unity-plate-vercel-server.vercel.app/api/v1/get-requests?id=${params.request_id}`
           ),
         element: (
           <PrivateRoute>
@@ -98,7 +98,7 @@ const routes = createBrowserRouter([
         path: "request/:request_id",
         loader: ({ params }) =>
           axios.get(
-            `http://localhost:4000/api/v1/get-requests?id=${params.request_id}`
+            `https://unity-plate-vercel-server.vercel.app/api/v1/get-requests?id=${params.request_id}`
           ),
         element: (
           <PrivateRoute>

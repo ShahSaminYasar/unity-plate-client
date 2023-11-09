@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
-import { Navigate, useLoaderData, useNavigate } from "react-router-dom";
+import { Navigate, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import Container from "../../layout/Container";
 import DonorDetailsCard from "../../components/FeaturedFoods/DonorDetailsCard";
@@ -20,6 +20,8 @@ const RequestDetails = () => {
   const axios = useAxios();
   const { user } = useAuth();
   const navigate = useNavigate();
+  let location = useLocation()
+  console.log("FD: ", location)
   let request_data = useLoaderData();
   request_data = request_data?.data[0];
 
@@ -139,7 +141,7 @@ const RequestDetails = () => {
         </div>
       </div>
 
-      <GoBackButton to="/my-requests" />
+      <GoBackButton to={location?.state || "/"} />
     </Container>
   );
 };

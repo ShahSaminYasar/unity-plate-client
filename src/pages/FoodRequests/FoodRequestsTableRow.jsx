@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useSettings from "../../hooks/useSettings";
 import UserName from "../../components/UserDetailComponents/UserName";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const FoodRequestsTableRow = ({ food_id, request_document }) => {
+  const location = useLocation()
   //   console.log(food_id);
   const { primaryColor } = useSettings();
   const axios = useAxios();
@@ -105,6 +106,7 @@ const FoodRequestsTableRow = ({ food_id, request_document }) => {
         <div className="flex flex-row gap-2 justify-end">
           <NavLink
             to={`/manage-request/${request_document?._id}`}
+            state={location?.pathname}
             className="inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none"
           >
             Manage

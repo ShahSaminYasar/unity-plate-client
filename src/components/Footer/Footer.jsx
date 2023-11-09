@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import useSettings from "../../hooks/useSettings";
 import Container from "../../layout/Container";
+import LogoIcon from "../../assets/icon2.png";
 
 const Footer = () => {
   const { bgGradient, borderColor } = useSettings();
@@ -13,18 +14,23 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
           {/* Col 1 */}
           <div className="flex items-center">
-            <NavLink to="/" className={"text-3xl"}>
+            <NavLink
+              className={`flex-1 xl:flex-none text-2xl font-semibold flex flex-col justify-center items-center gap-1`}
+              to="/"
+            >
+              <img src={LogoIcon} className="h-[85px] w-auto" alt="" />
               Unity Plate
             </NavLink>
           </div>
 
           <div>
-            <h4 className="font-semibold uppercase text-base">Pages</h4>
+            <h4 className="font-semibold uppercase text-base">
+              Office Address
+            </h4>
 
             <div className="mt-3 grid space-y-3 text-sm">
-              <NavLink>Home</NavLink>
-              <NavLink>All Products</NavLink>
-              <NavLink>All Products</NavLink>
+              You can find us on the 6th floor of the Commercial Building,
+              Nayasarak, Sylhet.
             </div>
           </div>
 
@@ -32,9 +38,9 @@ const Footer = () => {
             <h4 className="font-semibold uppercase text-base">Links</h4>
 
             <div className="mt-3 grid space-y-3 text-sm">
-              <NavLink>Home</NavLink>
-              <NavLink>All Products</NavLink>
-              <NavLink>All Products</NavLink>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/foods">All Products</NavLink>
+              <NavLink to="/account">Account</NavLink>
             </div>
           </div>
 
@@ -42,9 +48,9 @@ const Footer = () => {
             <h4 className="font-semibold uppercase text-base">Socials</h4>
 
             <div className="mt-3 grid space-y-3 text-sm">
-              <NavLink>Home</NavLink>
-              <NavLink>All Products</NavLink>
-              <NavLink>All Products</NavLink>
+              <NavLink>Facebook</NavLink>
+              <NavLink>Instagram</NavLink>
+              <NavLink>YouTube</NavLink>
             </div>
           </div>
         </div>
@@ -69,7 +75,7 @@ const Footer = () => {
                 </p>
               </div>
 
-              <div className="space-x-4">Socials</div>
+              <div className="space-x-4">Thanks for visiting.</div>
             </div>
           </div>
         </div>

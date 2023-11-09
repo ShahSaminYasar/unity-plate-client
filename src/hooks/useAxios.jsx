@@ -2,7 +2,7 @@ import axios from "axios";
 import useAuth from "./useAuth";
 
 const instance = axios.create({
-  baseURL: "http://localhost:4000/api/v1",
+  baseURL: "https://unity-plate-vercel-server.vercel.app/api/v1",
   withCredentials: true,
 });
 
